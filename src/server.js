@@ -5,8 +5,13 @@ import db from './database.js'
 import cors from 'cors'
 import routes from './routes.js'
 
+// import * as dotenv from 'dotenv'
+
+// dotenv.config({ path: './.env.local'})
+
 const app = express();
-const port = 3333;
+
+// const port = (process.env.PORT)
 
 app.use(cors());
 app.use(express.json())
@@ -14,4 +19,4 @@ db.connect()
 app.use(routes)
 
 
-app.listen(port, () => {console.log(`🚀 Backend started at http://localhost:${port} `)})
+// app.listen(port, () => {console.log(`🚀 Backend started at http://localhost:${port} `)})
