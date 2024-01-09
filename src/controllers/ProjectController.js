@@ -99,11 +99,11 @@ async function updateIntoBudgets(request, response){
 
     const { projectName, budgetName, price, category, createdAt } = request.body
 
-    const myObject = {
+    const object = {
         projectName: projectName
     }
 
-    const projects = await Projects.findOne(myObject)
+    const projects = await Projects.findOne(object)
 
     let newBudget = {
         budgetName: budgetName,
@@ -123,6 +123,8 @@ async function updateIntoBudgets(request, response){
         response.status(500).json({ error: err.message });
     }
 }
+
+
 
 async function remove(request, response){
 
