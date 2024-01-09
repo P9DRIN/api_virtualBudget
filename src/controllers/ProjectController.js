@@ -35,6 +35,7 @@ async function getProjectName(request, response){
 }
 
 async function getBudgets(request, response){
+
     try{
         const projects = await Projects.find(request.params)
         // const budgets = projects.map(project => project.budgets)
@@ -98,9 +99,11 @@ async function updateIntoBudgets(request, response){
 
     const { projectName, budgetName, price, category, createdAt } = request.body
 
-    const projects = await Projects.findOne(projectName)
+    const myObject = {
+        projectName: projectName
+    }
 
-    console.log(projects)
+    const projects = await Projects.findOne(myObject)
 
     let newBudget = {
         budgetName: budgetName,
@@ -111,7 +114,6 @@ async function updateIntoBudgets(request, response){
 
     projects.budgets.unshift(newBudget)
 
-    console.log("unshifted projects" + projects)
 
     try{
         await projects.save();
