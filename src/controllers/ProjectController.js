@@ -114,6 +114,7 @@ async function updateIntoBudgets(request, response){
 
     projects.budgets.unshift(newBudget)
 
+    console.log(projects)
 
     try{
         await projects.save();
